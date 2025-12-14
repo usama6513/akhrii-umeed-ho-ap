@@ -4,7 +4,7 @@ title: Physical AI Textbook Specification
 stage: spec
 date: 2025-12-08
 surface: agent
-model: claude-sonnet-4-5
+model: gemini-2.5-pro
 feature: physical-ai-textbook
 branch: master
 user: Usama Sharif
