@@ -4,10 +4,10 @@ title: Physical AI Textbook Implementation Plan
 stage: plan
 date: 2025-12-08
 surface: agent
-model: claude-sonnet-4-5
+model: gemini-2.5-pro
 feature: physical-ai-textbook
 branch: master
-user: Sharmeen Fatima
+user: Usama Sharif
 command: /sp.plan
 labels: ["plan", "architecture", "docusaurus", "file-structure", "diagrams", "code-examples"]
 links:
