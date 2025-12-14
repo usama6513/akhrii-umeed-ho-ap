@@ -2,7 +2,7 @@
 id: 001
 title: Physical AI Textbook Specification
 stage: spec
-date: 2025-12-09
+date: 2025-12-08
 surface: agent
 model: claude-sonnet-4-5
 feature: physical-ai-textbook
