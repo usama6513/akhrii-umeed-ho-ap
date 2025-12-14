@@ -1,62 +1,96 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import styles from './styles.module.css';
+
+import styles from './index.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: string;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Embodied Intelligence',
+    icon: '🤖',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Learn how physical robots perceive and interact with the real world,
+        bridging the gap between digital AI and tangible machines.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Spec-Driven Development',
+    icon: '🧠',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Master a systematic approach to building robotics systems with clear
+        specifications, testable outcomes, and production-ready code.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Sim-to-Real Transfer',
+    icon: '⚡',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Deploy AI models from simulation to physical robots with confidence,
+        using cutting-edge techniques for real-world performance.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, icon, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+      <div className={styles.featureCard}>
+        <div className={styles.featureIcon}>{icon}</div>
+        <Heading as="h3" className={styles.featureTitle}>{title}</Heading>
+        <p className={styles.featureDescription}>{description}</p>
       </div>
     </div>
   );
 }
 
-export default function HomepageFeatures(): ReactNode {
+function HomepageHeader() {
+  const {siteConfig} = useDocusaurusContext();
+  return (
+    <header className={clsx('hero', styles.heroBanner)}>
+      <div className="container">
+        <div className={styles.heroContent}>
+          <Heading as="h1" className={styles.heroTitle}>
+            Build the Body. Code the Brain.
+          </Heading>
+          <p className={styles.heroSubtitle}>
+            The World's First Spec-Driven Course on Physical AI & Humanoid Robotics.
+            <br />
+            <span className={styles.author}>Written by Sharmeen Fatima</span>
+          </p>
+          <div className={styles.buttons}>
+            <Link
+              className="button button--primary button--lg"
+              to="/docs/intro">
+              Start Learning (Module 1)
+            </Link>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/intro">
+              View Syllabus
+            </Link>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
@@ -67,5 +101,19 @@ export default function HomepageFeatures(): ReactNode {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function Home(): ReactNode {
+  const {siteConfig} = useDocusaurusContext();
+  return (
+    <Layout
+      title={`${siteConfig.title}`}
+      description="The World's First Spec-Driven Course on Physical AI & Humanoid Robotics. Learn embodied intelligence, sim-to-real transfer, and production robotics systems.">
+      <HomepageHeader />
+      <main>
+        <HomepageFeatures />
+      </main>
+    </Layout>
   );
 }
