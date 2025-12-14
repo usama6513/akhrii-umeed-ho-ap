@@ -70,7 +70,7 @@ function HomepageHeader() {
           <p className={styles.heroSubtitle}>
             The World's First Spec-Driven Course on Physical AI & Humanoid Robotics.
             <br />
-            <span className={styles.author}>Written by Sharmeen Fatima</span>
+            <span className={styles.author}>Written by USAMA K </span>
           </p>
           <div className={styles.buttons}>
             <Link
