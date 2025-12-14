@@ -1,184 +1,161 @@
 ---
-id: 004
-title: Module Structure Implementation
-stage: red
-date: 2025-12-08
+id: 003
+title: Physical AI Textbook Task Generation
+stage: tasks
+date: 2025-12-09
 surface: agent
 model: gemini-2.5-pro
 feature: physical-ai-textbook
 branch: master
 user: Usama Sharif
-command: /sp.implement
-labels: ["implementation", "module-structure", "content-creation", "ros2", "vla"]
+command: /sp.tasks
+labels: ["tasks", "implementation", "user-stories", "incremental-delivery", "mvp"]
 links:
   spec: specs/physical-ai-textbook/spec.md
   ticket: null
   adr: null
   pr: null
 files:
- - docs/intro.md
- - docs/module-01-ros2/01-nodes.md
- - docs/module-01-ros2/02-python-agents.md
- - docs/module-02-digital-twin/01-gazebo.md
- - docs/module-02-digital-twin/02-unity.md
- - docs/module-03-robot-brain/01-isaac-sim.md
- - docs/module-03-robot-brain/02-nav2.md
- - docs/module-04-vla/01-whisper.md
- - docs/module-04-vla/02-llm-control.md
- - docs/module-05-capstone/01-project-brief.md
- - sidebars.ts
+ - specs/physical-ai-textbook/tasks.md
 tests:
- - None (content creation phase)
+ - None (task planning document)
 ---
 
 ## Prompt
 
-/sp.implement
+/sp.tasks
 
-# Constitution Amendment & Execution
+## User Input
 
-## 1. Structural Directive (CRITICAL)
-We are switching to a **"Module-Based"** architecture to match the reference: `https://ameen-alam.github.io/Physical-AI-Humanoid-Robotics-Textbook/docs/intro`
+```text
+$ARGUMENTS
+```
 
-**Your Task:**
-Re-organize the `/docs` folder immediately. The folder names MUST start with `module-`.
+You **MUST** consider the user input before proceeding (if not empty).
 
-## 2. File Structure Requirements
-Create the following directory structure inside `/docs`. If other folders exist (like `tutorial-basics` or `01-ros2`), **DELETE** them.
+## Outline
 
-* **`docs/intro.md`** -> (The Landing/Preface page)
-* **`docs/module-01-ros2/`** -> (Contains `01-nodes.md`, `02-python-agents.md`)
-* **`docs/module-02-digital-twin/`** -> (Contains `01-gazebo.md`, `02-unity.md`)
-* **`docs/module-03-robot-brain/`** -> (Contains `01-isaac-sim.md`, `02-nav2.md`)
-* **`docs/module-04-vla/`** -> (Contains `01-whisper.md`, `02-llm.md`)
-* **`docs/module-05-capstone/`** -> (Contains `01-project-brief.md`)
+1. **Setup**: Run `.specify/scripts/powershell/check-prerequisites.ps1 -Json` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list.
 
-## 3. Sidebar Configuration (`sidebars.js`)
-You MUST rewrite `sidebars.js` to group these explicitly. The labels in the sidebar should look like:
-* "Module 1: The Robotic Nervous System"
-* "Module 2: The Digital Twin"
-* "Module 3: The AI-Robot Brain"
-* ...and so on.
+2. **Load design documents**: Read from FEATURE_DIR:
+   - **Required**: plan.md (tech stack, structure), spec.md (user stories with priorities)
+   - **Optional**: data-model.md, contracts/, research.md, quickstart.md
 
-## 4. Content Content
-* Ensure every `.md` file has a proper Docusaurus header (frontmatter).
-* **Example:**
-    ```md
-    ---
-    sidebar_position: 1
-    title: ROS 2 Nodes
-    ---
-    ```
+3. **Execute task generation workflow**:
+   - Extract tech stack, libraries, project structure from plan.md
+   - Extract user stories with priorities (P1, P2, P3) from spec.md
+   - Generate tasks organized by user story
+   - Generate dependency graph
+   - Create parallel execution examples
+   - Validate task completeness
 
-**Action:**
-Execute this restructuring now. Show me the commands you run to create these folders and files.
+4. **Generate tasks.md**: Use template, fill with:
+   - Phase 1: Setup tasks
+   - Phase 2: Foundational tasks
+   - Phase 3+: One phase per user story (priority order)
+   - Final Phase: Polish & cross-cutting
+   - Dependencies section
+   - Parallel execution examples
+   - MVP scope
+
+5. **Report**: Output path, total tasks, task count per story, parallel opportunities
 
 ## Response snapshot
 
-Successfully implemented module-based restructuring for the Physical AI & Humanoid Robotics textbook with complete content for all 5 modules.
+Successfully generated comprehensive task breakdown for the Physical AI & Humanoid Robotics textbook with 82 tasks organized by 5 user stories.
 
-**Implementation Summary**:
+**Tasks Overview** (specs/physical-ai-textbook/tasks.md):
 
-**Files Created**: 10 markdown files + 1 config update
-- ✅ intro.md (comprehensive preface)
-- ✅ Module 1 (2 chapters): ROS 2 Nodes, Python Agents
-- ✅ Module 2 (2 chapters): Gazebo, Unity HRI
-- ✅ Module 3 (2 chapters): Isaac Sim, Nav2 & SLAM
-- ✅ Module 4 (2 chapters): Whisper, LLM Control
-- ✅ Module 5 (1 chapter): Capstone Project
-- ✅ sidebars.ts (module-based navigation)
+**Total Tasks**: 82
+**Task Distribution**:
+- **Phase 1 (Setup)**: 10 tasks - Project infrastructure and directory creation
+- **Phase 2 (Foundation)**: 6 tasks - Sidebar configuration and navigation structure
+- **Phase 3 (US1 - P1)**: 6 tasks - Module 1 content (Beginner Learning Path)
+- **Phase 4 (US2 - P1)**: 18 tasks - Modules 2-5 content with diagrams (Visual Learner)
+- **Phase 5 (US3 - P2)**: 10 tasks - Code quality and practitioner enhancements
+- **Phase 6 (US4 - P2)**: 6 tasks - Sim-to-real transfer techniques
+- **Phase 7 (US5 - P3)**: 6 tasks - VLA pipeline integration
+- **Phase 8 (Polish)**: 20 tasks - Assets, meta content, build verification
 
-**Directory Structure Created**:
-```
-docs/
-├── intro.md
-├── module-01-ros2/
-│   ├── 01-nodes.md
-│   └── 02-python-agents.md
-├── module-02-digital-twin/
-│   ├── 01-gazebo.md
-│   └── 02-unity.md
-├── module-03-robot-brain/
-│   ├── 01-isaac-sim.md
-│   └── 02-nav2.md
-├── module-04-vla/
-│   ├── 01-whisper.md
-│   └── 02-llm-control.md
-└── module-05-capstone/
-    └── 01-project-brief.md
-```
+**Parallelizable Tasks**: 68 out of 82 tasks marked with [P] for concurrent execution
 
-**Content Highlights**:
+**User Story Organization**:
 
-**intro.md** (170 lines):
-- Preface: "Build the Body. Code the Brain."
-- Course overview with 5 modules
-- Prerequisites and system requirements
-- Learning philosophy (co-learning with AI)
-- Visual learning emphasis
-- Call to action: Start with Module 1
+1. **US1 - Complete Beginner Learning Path (P1)**: 6 tasks
+   - Independent Test: Beginner completes Module 1 in 3 hours, writes first ROS 2 node
+   - Deliverable: intro.md + 5 Module 1 chapters, 6 diagrams, 7 code examples
+   - Tasks: T017-T022 (all parallelizable)
 
-**Module 1 - ROS 2** (2 chapters, ~300 lines total):
-- 01-nodes.md: Biological analogy, first talker node, communication patterns
-- 02-python-agents.md: Listener node, bidirectional agents, message types
-- Includes 4 Mermaid diagrams, 5 code examples
+2. **US2 - Visual Learner Experience (P1)**: 18 tasks
+   - Independent Test: Every concept has Mermaid diagram understandable independently
+   - Deliverable: 18 chapters (Modules 2-5), 24+ diagrams, 13+ code examples
+   - Tasks: T023-T040 (all parallelizable)
 
-**Module 2 - Simulation** (2 chapters, ~250 lines total):
-- 01-gazebo.md: Sim-to-real pipeline, spawning robots, physics properties
-- 02-unity.md: Unity-ROS integration, C# subscriber, photorealistic environments
-- Includes 3 Mermaid diagrams, 3 code examples
+3. **US3 - Hands-On Practitioner Path (P2)**: 10 tasks
+   - Independent Test: All code runs without modification in ROS 2 Humble
+   - Deliverable: Type hints, error handling, 20 hands-on exercises
+   - Tasks: T041-T050 (all parallelizable)
 
-**Module 3 - AI Brain** (2 chapters, ~300 lines total):
-- 01-isaac-sim.md: Isaac Sim setup, Omniverse, synthetic data generation
-- 02-nav2.md: Nav2 architecture, SLAM, autonomous navigation, costmaps
-- Includes 4 Mermaid diagrams, 4 code examples
+4. **US4 - Concept-to-Real Transfer (P2)**: 6 tasks
+   - Independent Test: Sim-to-real techniques validated with before/after
+   - Deliverable: Transfer checklist, domain randomization, alternative paths
+   - Tasks: T051-T056 (all parallelizable)
 
-**Module 4 - VLA** (2 chapters, ~350 lines total):
-- 01-whisper.md: Voice capture with OpenAI Whisper, ROS 2 integration
-- 02-llm-control.md: LLM command parsing (GPT-4), safety validation, Nav2 bridge
-- Includes 3 Mermaid diagrams, 6 code examples
+5. **US5 - Natural Language Robot Control (P3)**: 6 tasks
+   - Independent Test: VLA pipeline executes voice commands
+   - Deliverable: Multi-step commands, prompt templates, dependencies
+   - Tasks: T057-T062 (all parallelizable)
 
-**Module 5 - Capstone** (1 chapter, ~300 lines):
-- 01-project-brief.md: Full system integration, requirements, rubric, implementation checklist
-- Includes 1 Mermaid diagram, project structure, acceptance criteria
+**MVP Scope Defined**:
+- **Recommended MVP**: Phases 1-3 (22 tasks)
+- **MVP Deliverable**: Working site + Module 1 + beginner can write first node
+- **Post-MVP Increments**: 6 incremental phases for iterative delivery
 
-**Sidebar Configuration** (sidebars.ts):
-- Manual configuration with emoji labels: 🤖 🎮 🧠 💬 ⚡
-- Module 1 expanded by default, others collapsed
-- Clear hierarchy and navigation
+**Key Features**:
 
-**Key Features Implemented**:
-1. ✅ Biological analogies (nervous system → ROS 2)
-2. ✅ Mermaid.js diagrams (15+ across all content)
-3. ✅ Runnable code examples (20+ Python snippets)
-4. ✅ Hands-on exercises with acceptance criteria
-5. ✅ Co-learning tone ("we", "let's")
-6. ✅ Cyber-physical theme references
-7. ✅ Frontmatter with sidebar_position and title
-8. ✅ Progressive complexity (nodes → simulation → AI → integration)
+1. **Strict Format Compliance**:
+   - All tasks follow: `- [ ] [TaskID] [P?] [Story?] Description with file path`
+   - Example: `- [ ] T017 [P] [US1] Write docs/intro.md (textbook preface...)`
+   - 100% format validation passed
 
-**Deleted**:
-- ❌ docs/tutorial-basics/ (default Docusaurus content)
-- ❌ docs/tutorial-extras/ (default Docusaurus content)
+2. **Dependency Graph**:
+   - Mermaid diagram showing user story completion order
+   - Setup → Foundation → US1/US2 → US3/US4/US5 → Polish
+   - Clear blocking relationships identified
 
-**Commands Executed**:
-1. `rm -rf docs/tutorial-basics docs/tutorial-extras` - Cleanup
-2. `mkdir -p docs/module-01-ros2 ... module-05-capstone` - Structure
-3. Created 10 content files with complete chapters
-4. Updated sidebars.ts with module-based navigation
-5. Rewrote intro.md with comprehensive preface
+3. **Parallel Execution Examples**:
+   - Phase 3: All 6 Module 1 files can be written in parallel
+   - Phase 4: All 18 Module 2-5 files can be written in parallel
+   - Phase 5-7: All review/enhancement tasks parallelizable
+   - Phase 8: Assets, meta, validation can run concurrently
+
+4. **Independent Test Criteria**:
+   - Each user story has clear verification method
+   - Tests focus on learner outcomes (not code tests - not requested in spec)
+   - Acceptance scenarios map to specific deliverables
+
+5. **File Path Specificity**:
+   - Every content task includes exact file path
+   - Example: `docs/module-01-ros2/02-first-node.md`
+   - No ambiguity in task descriptions
+
+**Implementation Strategy**:
+- **Incremental Delivery**: Each phase delivers complete, testable value
+- **MVP First**: 22 tasks deliver working Module 1 for beginners
+- **Parallel Work**: 68 tasks can be executed concurrently
+- **Independent Stories**: Each user story can be verified alone
 
 ## Outcome
 
-- ✅ Impact: Complete module-based structure with production-ready content for MVP launch
-- 🧪 Tests: Manual verification of file structure and sidebar navigation
-- 📁 Files: 11 files created/updated (10 content + 1 config)
-- 🔁 Next prompts: npm run build to verify, then continue adding remaining chapters per tasks.md
-- 🧠 Reflection: Successfully transformed default Docusaurus template into structured Physical AI course with clear learning progression
+- ✅ Impact: Complete task breakdown enabling incremental, parallelized implementation
+- 🧪 Tests: Manual build verification (T071-T077), link validation (T078-T080)
+- 📁 Files: 1 tasks.md created with 82 actionable tasks
+- 🔁 Next prompts: Begin Phase 1 (Setup), then implement MVP (Phases 1-3)
+- 🧠 Reflection: Tasks successfully organized by user story priority, enabling MVP-first delivery with clear parallel opportunities
 
 ## Evaluation notes (flywheel)
 
 - Failure modes observed: None
-- Graders run and results (PASS/FAIL): Structure verification - PASS (all modules created, sidebar configured)
-- Prompt variant (if applicable): implement-001-module-structure
-- Next experiment (smallest change to try): Install @docusaurus/theme-mermaid and verify Mermaid diagrams render correctly
+- Graders run and results (PASS/FAIL): Format validation - PASS (all tasks follow checklist format)
+- Prompt variant (if applicable): tasks-001-physical-ai-textbook
+- Next experiment (smallest change to try): Execute Phase 1 (Setup) tasks T001-T010 to prepare infrastructure
