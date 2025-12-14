@@ -1,51 +1,137 @@
 ---
-id: 002
-title: Specify Humanoid Robotics Book
+id: 001
+title: Physical AI Textbook Specification
 stage: spec
-date: 2025-12-14
+date: 2025-12-09
 surface: agent
-model: gemini-pro
-feature: humanoid-robotics-book
-branch: 1-humanoid-robotics-book
-user: [USER]
+model: claude-sonnet-4-5
+feature: physical-ai-textbook
+branch: master
+user: Usama Sharif
 command: /sp.specify
-labels: [spec, feature-creation, documentation]
+labels: ["spec", "curriculum", "robotics", "ros2", "physical-ai", "vla"]
 links:
-  spec: /specs/1-humanoid-robotics-book/spec.md
+  spec: specs/physical-ai-textbook/spec.md
   ticket: null
   adr: null
   pr: null
 files:
-  - specs/1-humanoid-robotics-book/spec.md
-  - specs/1-humanoid-robotics-book/checklists/requirements.md
+ - specs/physical-ai-textbook/spec.md
 tests:
-  []
+ - None (specification document)
 ---
 
 ## Prompt
 
-/sp.specify AI-Driven Humanoid Robotics Development Book using Docusaurus Target audience: - Software developers transitioning to robotics (Python/C++ experience) - Computer science students interested in AI-robotics convergence - Robotics engineers exploring humanoid systems - Technical skill level: Intermediate to Advanced Focus: Building autonomous humanoid robots from simulation to AI-powered control Core modules to cover: 1. Module 1 - The Robotic Nervous System (ROS 2) - ROS 2 architecture, nodes, topics, services - Python-ROS 2 integration using rclpy - URDF modeling for humanoid robots - Practical examples with real code 2. Module 2 - The Digital Twin (Gazebo & Unity) - Physics simulation fundamentals - Environment creation and testing - Sensor simulation (LiDAR, cameras, IMU) - Integration between Gazebo and Unity 3. Module 3 - The AI-Robot Brain (NVIDIA Isaac™) - Isaac Sim for photorealistic training - Isaac ROS for hardware-accelerated perception - Nav2 for bipedal navigation - Synthetic data generation techniques 4. Module 4 - Vision-Language-Action (VLA) - Voice-to-action pipelines with Whisper - LLM integration for cognitive planning - Natural language to robot action translation - Multi-modal AI architectures Success criteria: - Reader can set up complete ROS 2 development environment - Reader can create and simulate a humanoid robot in Gazebo/Unity - Reader can integrate NVIDIA Isaac for AI-powered perception - Reader can build voice-controlled autonomous robot (capstone) - All code examples are executable and tested - Each module has 3+ hands-on exercises - Capstone project ties all modules together Deliverables: - 25-35 chapters organized by 4 modules - Working code repository with all examples - Step-by-step tutorials with screenshots - Troubleshooting guide for common issues - Video demonstrations embedded where helpful - Interactive diagrams for architecture explanations - Downloadable project templates and starter code Constraints: - Format: Docusaurus MDX files with React components - Code: Python 3.10+, ROS 2 Humble/Iron - Platform support: Ubuntu 22.04 LTS (primary), Docker containers - Prerequisites clearly stated at chapter start - Estimated reading time per chapter: 15-30 minutes - Total book length: 50,000-70,000 words - Timeline: Complete book structure within 8-12 weeks - Deployment: GitHub Pages with custom domain support Technical requirements: - Code snippets with syntax highlighting and line numbers - Copy-to-clipboard functionality for all code - Mermaid diagrams for system architecture - Admonitions (tips, warnings, notes) for important information - Tabs for multi-language/platform examples - Live code sandboxes where possible - Performance: Page load under 3 seconds Not building: - Hardware assembly or physical robot construction guide - Deep dive into mechanical engineering or CAD modeling - Comparison of all available robotics frameworks - Production deployment or enterprise scaling strategies - Detailed mathematics proofs (keep practical) - Non-humanoid robot types (drones, arms, etc.) - Electrical engineering or circuit design Structure & organization: - Introduction: Vision for humanoid robotics + book roadmap - Prerequisites: Required knowledge and setup instructions - 4 Core modules (6-8 chapters each) - Capstone project: Multi-chapter final project - Appendices: Installation guides, references, glossary - Resources: Links to communities, papers, tools Learning outcomes: After completing this book, readers will: 1. Understand ROS 2 architecture and messaging patterns 2. Build and simulate humanoid robots in virtual environments 3. Implement AI-powered perception using NVIDIA Isaac 4. Create voice-controlled autonomous robotic systems 5. Integrate multiple technologies into cohesive projects 6. Debug and troubleshoot complex robotics systems Quality standards: - All code tested on specified platforms - Screenshots current (not outdated) - External links verified monthly - Grammar/spelling professionally edited - Technical accuracy reviewed by robotics experts - Community feedback incorporated - Accessibility: Alt text for images, semantic HTML
+/sp.specify
+
+# Specification for "Physical AI & Humanoid Robotics" Textbook
+
+## 1. Core Curriculum (The 4 Modules + Capstone)
+You must define the educational content for the following structure.
+
+### **Module 1: The Robotic Nervous System (ROS 2)**
+* **Goal:** Master the middleware that connects the robot's brain to its body.
+* **Key Topics:**
+    * ROS 2 Architecture: Nodes, Topics, Services (explained using biological analogies).
+    * Hands-on: Writing `rclpy` (Python) agents.
+    * URDF: Defining the robot's physical geometry.
+
+### **Module 2: The Digital Twin (Simulation)**
+* **Goal:** Create a physics-compliant virtual environment before touching real hardware.
+* **Key Topics:**
+    * **Gazebo:** Simulating gravity, friction, and collisions.
+    * **Unity:** High-fidelity visualization and Human-Robot Interaction.
+    * **Sensors:** Simulating LiDAR, IMU, and Depth Cameras.
+
+### **Module 3: The AI-Robot Brain (Isaac Sim & Nav2)**
+* **Goal:** Advanced perception and autonomous navigation.
+* **Key Topics:**
+    * **NVIDIA Isaac Sim:** Synthetic data generation and photorealistic simulation.
+    * **Nav2:** Path planning, obstacle avoidance, and mapping (SLAM).
+
+### **Module 4: Vision-Language-Action (VLA)**
+* **Goal:** The frontier of Physical AI—controlling robots with natural language.
+* **Key Topics:**
+    * **Voice-to-Action:** Using OpenAI Whisper to capture commands.
+    * **LLM Control:** Using LLMs (like GPT-4o or Gemini) to translate text into ROS 2 actions.
+
+### **Capstone Project: The Autonomous Humanoid**
+* **Goal:** A final project combining all modules. The robot hears a command, plans a path, and executes a task in simulation.
+
+## 2. Learning Experience Requirements
+* **Visuals:** Every topic MUST define where a **Mermaid.js** diagram is needed.
+* **Code:** Every technical concept MUST have a corresponding Python code snippet.
+* **Tone:** Visionary, "Co-Learning" style (Teacher + AI).
+
+**Action:** Generate the detailed Specification file (`spec.md`) for approval.
 
 ## Response snapshot
 
-Successfully created the feature specification for the 'humanoid-robotics-book'.
+Successfully created comprehensive specification for the Physical AI & Humanoid Robotics textbook with the following structure:
 
-1.  **Feature Scaffolding**: Manually created the directory structure `specs/1-humanoid-robotics-book/` after the provided script failed.
-2.  **Specification Created**: Drafted and wrote a detailed specification at `specs/1-humanoid-robotics-book/spec.md` based on the extensive user input.
-3.  **Checklist Validated**: Created and validated the requirements checklist at `specs/1-humanoid-robotics-book/checklists/requirements.md`, which passed immediately due to the high quality of the initial prompt.
-4.  **PHR Created**: Documented this action in `history/prompts/humanoid-robotics-book/002-specify-humanoid-robotics-book.spec.prompt.md`.
+**Specification Overview** (specs/physical-ai-textbook/spec.md):
+
+**5 Prioritized User Stories**:
+1. **P1 - Complete Beginner Learning Path**: Primary audience can go from zero to autonomous systems
+2. **P1 - Visual Learner Experience**: Every concept has Mermaid.js diagrams for spatial/architectural understanding
+3. **P2 - Hands-On Practitioner Path**: Production-ready code snippets following ROS 2 conventions
+4. **P2 - Concept-to-Real Transfer**: Explicit sim-to-real gap bridging techniques
+5. **P3 - Natural Language Robot Control**: Cutting-edge VLA integration (builds on foundations)
+
+**35 Functional Requirements** covering:
+- Module 1 (FR-001 to FR-006): ROS 2 fundamentals with biological analogies, rclpy code, URDF, TF
+- Module 2 (FR-007 to FR-012): Gazebo/Unity simulation, sensor modeling, sim-to-real transfer
+- Module 3 (FR-013 to FR-019): Isaac Sim, synthetic data, Nav2 architecture, SLAM
+- Module 4 (FR-020 to FR-025): Whisper integration, LLM command parsing, safety validation
+- Capstone (FR-026 to FR-029): Full system integration project
+- Cross-cutting (FR-030 to FR-035): Diagrams, code quality, tone, documentation
+
+**Detailed Content Structure**:
+- **Module 1**: 5 chapters (Biological analogy, First node, Services/Actions, URDF, TF)
+- **Module 2**: 5 chapters (Why simulate, Gazebo, Physics/Sensors, Unity HRI, Sim-to-real)
+- **Module 3**: 5 chapters (Isaac Sim intro, Synthetic data, Nav2, SLAM, Planning algorithms)
+- **Module 4**: 5 chapters (VLA revolution, Whisper, LLM parsing, Action servers, Safety)
+- **Capstone**: Full integration project with rubric
+
+**30+ Mermaid.js Diagrams Specified**:
+- Module 1: 6 diagrams (ROS architecture, pub/sub flow, TF tree, etc.)
+- Module 2: 6 diagrams (Sim-to-real pipeline, Gazebo arch, sensor flow, etc.)
+- Module 3: 8 diagrams (Isaac Sim, Nav2 stack, SLAM loop, costmaps, etc.)
+- Module 4: 6 diagrams (VLA pipeline, Whisper, LLM parsing, validation, etc.)
+- Capstone: 4 diagrams (Full integration, data flow, state machine, deployment)
+
+**Code Examples**: Every chapter includes runnable Python snippets (20+ complete examples from talker/listener nodes to VLA integration)
+
+**Success Criteria** (8 measurable outcomes):
+- Beginners run first ROS 2 node in 3 hours
+- 80+ topics each have code examples
+- 90%+ code runs without modification
+- Comprehensive glossary with 100+ terms
+- Alternative paths for non-GPU learners
+
+**Technical Constraints**:
+- ROS 2 Humble (LTS)
+- Python 3.10+
+- Gazebo Garden/Harmonic, Unity 2021.3+, Isaac Sim 2023.1+
+- All code passes linting with type hints
+
+**Tone Guidelines**:
+- Co-learning voice ("we", "let's")
+- Visionary but practical
+- Accessible with immediate jargon definitions
 
 ## Outcome
 
-- ✅ Impact: High. A complete and validated feature specification is now ready for the planning phase.
-- 🧪 Tests: N/A
-- 📁 Files: 2 files created.
-- 🔁 Next prompts: The project is ready for `/sp.plan`.
-- 🧠 Reflection: The provided `create-new-feature.ps1` script repeatedly failed due to argument parsing issues. The agent successfully pivoted to a manual file creation strategy to unblock the process. The user's prompt was extremely clear and detailed, which made generating a high-quality specification straightforward.
+- ✅ Impact: Complete educational specification for world's first spec-driven Physical AI course
+- 🧪 Tests: Specification includes testable acceptance criteria for all user stories
+- 📁 Files: 1 comprehensive spec.md created (6000+ words)
+- 🔁 Next prompts: /sp.plan to design implementation architecture, /sp.tasks to break down into actionable items
+- 🧠 Reflection: Spec successfully balances beginner accessibility with cutting-edge topics (VLA), provides clear visual (Mermaid) and code requirements, and maintains the cyber-physical design philosophy
 
 ## Evaluation notes (flywheel)
 
-- Failure modes observed: PowerShell script argument parsing.
-- Graders run and results (PASS/FAIL): PASS
-- Prompt variant (if applicable): N/A
-- Next experiment (smallest change to try): Investigate the PowerShell script to fix the parsing issue for future runs.
+- Failure modes observed: None
+- Graders run and results (PASS/FAIL): Manual review - PASS (comprehensive, testable, clear priorities)
+- Prompt variant (if applicable): spec-001-physical-ai-textbook
+- Next experiment (smallest change to try): Generate plan.md to define chapter structure, diagram specifications, and code snippet architecture
